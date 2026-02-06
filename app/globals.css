@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0a0f;
+  --foreground: #ededed;
+  --purple-glow: rgba(168, 85, 247, 0.4);
+  --blue-glow: rgba(59, 130, 246, 0.4);
+}
+
+body {
+  color: var(--foreground);
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a0b2e 50%, #0f0a1e 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Animated background gradient */
+@keyframes gradientShift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--purple-glow) 0%, transparent 50%),
+    radial-gradient(circle, var(--blue-glow) 0%, transparent 50%);
+  background-size: 100% 100%;
+  animation: gradientShift 15s ease infinite;
+  opacity: 0.3;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(59, 130, 246, 0.1));
+    border: 1px solid transparent;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, #a855f7, #3b82f6);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.5;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #a855f7, #3b82f6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #9333ea, #2563eb);
+}
+
+/* Selection color - improved readability */
+::selection {
+  background: rgba(168, 85, 247, 0.25);
+  color: inherit;
+  /* Keep original text color */
+}
+
+/* Specific selection for code blocks */
+pre ::selection,
+code ::selection {
+  background: rgba(168, 85, 247, 0.35);
+  color: inherit;
+}
+
+/* Prism Syntax Highlighting (Custom Match) */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #f8f8f2;
+  text-shadow: none;
+  font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: inherit;
+  tab-size: 4;
+  hyphens: none;
+}
+
+/* Comments */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #4ade80 !important;
+  /* Green */
+}
+
+/* Punctuation */
+.token.punctuation {
+  color: #f8f8f2;
+}
+
+/* Keywords (Pink) */
+.token.keyword,
+.token.tag,
+.token.class-name {
+  color: #ff79c6;
+}
+
+/* Strings (Yellow) */
+.token.string,
+.token.attr-value {
+  color: #f1fa8c;
+}
+
+/* Numbers (Purple) */
+.token.number,
+.token.boolean {
+  color: #bd93f9;
+}
+
+/* Functions (Blue/Cyan) */
+.token.function,
+.token.builtin,
+.token.attr-name,
+.token.selector {
+  color: #8be9fd;
+}
+
+/* Operators */
+.token.operator,
+.token.entity,
+.token.url {
+  color: #ff79c6;
+}
+
+/* Shared Editor Font to ensure alignment */
+.editor-font {
+  font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+/* Strict Layout for Editor Layers */
+.code-layer {
+  font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
+  font-size: 14px !important;
+  line-height: 24px !important;
+  /* Fixed 24px leading */
+  padding: 16px !important;
+  /* p-4 = 1rem = 16px */
+  margin: 0 !important;
+  border-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure transparent textarea stays transparent on selection */
+.transparent-input::selection {
+  background: rgba(168, 85, 247, 0.3);
+  color: transparent;
+}
