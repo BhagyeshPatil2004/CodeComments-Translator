@@ -6,6 +6,12 @@
 ![Next.js](https://img.shields.io/badge/Next.js-14-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
 
+## 📸 Demo
+
+<img width="1919" height="1079" alt="Screenshot 2026-02-06 112054" src="https://github.com/user-attachments/assets/d7782aa9-4243-462a-a149-d4aef36ba26e" />
+
+<img width="1919" height="845" alt="Screenshot 2026-02-05 234542" src="https://github.com/user-attachments/assets/6a6385d0-c1a1-488c-86c5-0c961d583582" />
+
 ## 🎯 Problem
 
 Millions of developers struggle to read code with comments in foreign languages:
@@ -118,11 +124,6 @@ def calculate_total(items):
 3. Get your API key from settings
 4. Add to `.env` as `LINGO_API_KEY`
 
-### Google Gemini API (Fallback)
-1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Create an API key (FREE tier available)
-3. Add to `.env` as `GEMINI_API_KEY`
-
 ## 🌟 Supported Languages
 
 - 🇬🇧 English
@@ -185,9 +186,6 @@ Or use any Node.js hosting platform.
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
-
-MIT License - feel free to use this project for anything!
 
 ## 🙏 Acknowledgments
 
